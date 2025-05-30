@@ -15,15 +15,14 @@
 
 <body>
     <div class="app-container">
-        <!-- Header -->
         <header>
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <i class="fas fa-map-marked-alt"></i>
                 NOME
             </a>
 
             <ul class="nav-links">
-                <li><a href="/" class="active">Mapa</a></li>
+                <li><a href="index.html" class="active">Mapa</a></li>
                 <li><a href="feed.html">Feed</a></li>
                 <li><a href="#">Alertas</a></li>
                 <li><a href="#">Ajuda</a></li>
@@ -46,12 +45,11 @@
             </div>
         </header>
 
-        <!-- Modal de Reporte -->
         <div class="report-modal">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2><i class="fas fa-exclamation-circle"></i> Reportar Evento</h2>
-                    <button class="close-modal">&times;</button>
+                    <button class="close-modal">×</button>
                 </div>
                 <div class="modal-body">
                     <form id="report-form">
@@ -137,9 +135,7 @@
             </div>
         </div>
 
-        <!-- Main Content -->
         <div class="main-content">
-            <!-- Map Section -->
             <div class="map-container">
                 <div class="map-overlay"></div>
 
@@ -179,36 +175,29 @@
                 </div>
 
                 <div class="map-markers">
-                    <!-- Chuvas -->
                     <div class="marker rain" style="top: 35%; left: 50%;" data-id="1"><i class="fas fa-cloud-rain"></i>
                     </div>
                     <div class="marker rain" style="top: 40%; left: 50%;" data-id="2"><i class="fas fa-cloud-rain"></i>
                     </div>
 
-                    <!-- Calor -->
                     <div class="marker heat" style="top: 30%; left: 60%;" data-id="3"><i
                             class="fas fa-temperature-high"></i></div>
 
-                    <!-- Frio -->
                     <div class="marker cold" style="top: 70%; left: 40%;" data-id="4"><i class="fas fa-snowflake"></i>
                     </div>
 
-                    <!-- Alagamentos -->
                     <div class="marker flood" style="top: 30%; left: 40%;" data-id="5"><i
                             class="fas fa-house-flood-water"></i></div>
 
-                    <!-- Pedidos de Ajuda -->
                     <div class="marker help" style="top: 35%; left: 45%;" data-id="6"><i
                             class="fas fa-hands-helping"></i></div>
                     <div class="marker help" style="top: 40%; left: 60%;" data-id="7"><i
                             class="fas fa-hands-helping"></i></div>
 
-                    <!-- Ofertas de Ajuda -->
                     <div class="marker shelter" style="top: 50%; left: 45%;" data-id="8"><i class="fas fa-home"></i>
                     </div>
                 </div>
 
-                <!-- Info maps -->
                 <div class="marker-info" id="marker-info-1">
                     <h4><i class="fas fa-cloud-rain" style="color: var(--rain);"></i> Chuva Forte</h4>
                     <div class="info-content">
@@ -260,7 +249,6 @@
                 </div>
             </div>
 
-            <!-- Feed Section -->
             <div class="feed-container">
                 <div class="feed-header">
                     <h2>Atividades Recentes</h2>
@@ -411,10 +399,9 @@
                 </div>
             </div>
         </div>
-        <!-- Adicione isso antes do fechamento da div .app-container -->
         <div class="bottom-navbar">
             <div class="nav-icons">
-                <a href="#" class="nav-icon active">
+                <a href="index.html" class="nav-icon active">
                     <i class="fas fa-map-marked-alt"></i>
                     <span>Mapa</span>
                 </a>

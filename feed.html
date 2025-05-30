@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOME</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/feed.css">
+    <link rel="stylesheet" href="css/report.css">
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">
+            <i class="fas fa-map-marked-alt"></i>
+            NOME
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="/">Mapa</a></li>
+            <li><a href="feed.html" class="active">Feed</a></li>
+            <li><a href="#">Alertas</a></li>
+            <li><a href="#">Ajuda</a></li>
+        </ul>
+
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Pesquisar local ou evento...">
+        </div>
+
+        <div class="user-actions">
+            <button class="report-btn" id="open-report-modal">
+                <i class="fas fa-plus"></i>
+                <span>Reportar</span>
+            </button>
+            <div class="user-profile">
+                <div class="user-avatar">FM</div>
+                <span>Fabrício Magoga</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Modal de Reporte -->
+    <div class="report-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-exclamation-circle"></i> Reportar Evento</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="report-form">
+                    <div class="form-group">
+                        <label for="report-type">Tipo de Reporte</label>
+                        <select id="report-type" required>
+                            <option value="">Selecione o tipo de evento</option>
+                            <option value="rain">Chuva (Leve/Moderada/Forte)</option>
+                            <option value="flood">Alagamento</option>
+                            <option value="heat">Calor Extremo</option>
+                            <option value="cold">Frio Intenso</option>
+                            <option value="help">Pedido de Ajuda</option>
+                            <option value="offer">Oferecer Ajuda</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="report-location">Localização</label>
+                        <input type="text" id="report-location"
+                            placeholder="Digite seu endereço ou arraste o marcador no mapa" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nível de Urgência</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="urgent" name="urgency" value="urgent">
+                                <label for="urgent">Urgente</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="moderate" name="urgency" value="moderate" checked>
+                                <label for="moderate">Importante</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="info" name="urgency" value="info">
+                                <label for="info">Informativo</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="report-details">Detalhes</label>
+                        <textarea id="report-details"
+                            placeholder="Descreva o que está acontecendo, condições específicas, recursos necessários, etc."
+                            required></textarea>
+                    </div>
+
+                    <div class="form-group" id="resources-section" style="display: none;">
+                        <label>Recursos Necessários/Oferecidos</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="shelter" value="shelter">
+                                <label for="shelter">Abrigo</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="food" value="food">
+                                <label for="food">Comida</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="water" value="water">
+                                <label for="water">Água</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="clothes" value="clothes">
+                                <label for="clothes">Roupas</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="transport" value="transport">
+                                <label for="transport">Transporte</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="medical" value="medical">
+                                <label for="medical">Assistência médica</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn btn-cancel">Cancelar</button>
+                <button class="modal-btn btn-submit">Enviar Reporte</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-menu">
+                <div class="menu-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Início</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-hashtag"></i>
+                    <span>Explorar</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-bell"></i>
+                    <span>Notificações</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Mensagens</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Comunidades</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Perfil</span>
+                </div>
+            </div>
+            <div class="who-to-follow">
+                <h3>Quem seguir</h3>
+                <div class="follow-item">
+                    <div class="follow-avatar">CD</div>
+                    <div class="follow-info">
+                        <h4>Defesa Civil</h4>
+                        <p>@defesaciviloficial</p>
+                    </div>
+                    <button class="follow-btn">Seguir</button>
+                </div>
+                <div class="follow-item">
+                    <div class="follow-avatar">IN</div>
+                    <div class="follow-info">
+                        <h4>INMET</h4>
+                        <p>@inmet_oficial</p>
+                    </div>
+                    <button class="follow-btn">Seguir</button>
+                </div>
+                <div class="follow-item">
+                    <div class="follow-avatar">CV</div>
+                    <div class="follow-info">
+                        <h4>Cruz Vermelha</h4>
+                        <p>@cruzvermelhabr</p>
+                    </div>
+                    <button class="follow-btn">Seguir</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Feed -->
+        <div class="main-feed">
+            <div class="new-post-card">
+                <div class="new-post-header">
+                    <div class="new-post-avatar">FM</div>
+                    <div style="flex: 1;">
+                        <h4>Fabrício Magoga</h4>
+                    </div>
+                </div>
+                <div class="new-post-content">
+                    <textarea id="textUser"
+                        placeholder="O que está acontecendo? Reporte um evento, peça ou ofereça ajuda..."></textarea>
+                </div>
+                <div class="new-post-actions">
+                    <div class="post-options">
+                        <div class="post-option">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="post-option">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="post-option">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                    </div>
+                    <button class="post-submit">Publicar</button>
+                </div>
+            </div>
+            <div class="feed-cards">
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">PD</div>
+                        <div class="post-meta">
+                            <h4>Pedro Dalmas</h4>
+                            <p>@pedrodalmas · 15 min atrás · São Paulo, SP</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-rain">
+                        <i class="fas fa-cloud-rain"></i> Chuva Forte
+                    </div>
+                    <div class="post-content">
+                        <p>Chuva muito forte na região da Paulista com risco de alagamento. Evitem a avenida no momento.
+                            Água já está acumulando na altura do número 900.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        class="post-image">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> 24
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 7
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">JV</div>
+                        <div class="post-meta">
+                            <h4>João Vitor Benedet</h4>
+                            <p>@benedetjv · 45 min atrás · Rio de Janeiro, RJ</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-help">
+                        <i class="fas fa-hands-helping"></i> Pedido de Ajuda
+                    </div>
+                    <div class="post-content">
+                        <p>Preciso de abrigo urgente! Minha casa está alagando e tenho uma criança de 2 anos. Alguém
+                            pode
+                            ajudar? Estamos na Rua Augusta, 500.</p>
+                        <p style="margin-top: 10px;"><strong>Recursos necessários:</strong> Abrigo temporário, comida,
+                            água
+                        </p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="fas fa-hand-holding-heart"></i> Oferecer Ajuda (3)
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 12
+                        </button>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">LA</div>
+                        <div class="post-meta">
+                            <h4>Lucas Akira</h4>
+                            <p>@akira · 1 hora atrás · Salvador, BA</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-offer">
+                        <i class="fas fa-home"></i> Oferecendo Abrigo
+                    </div>
+                    <div class="post-content">
+                        <p>Tenho espaço disponível em minha casa para até 4 pessoas afetadas pela enchente. Ofereço
+                            abrigo,
+                            água e comida. Localização: Rua Oscar Freire, 800.</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="fas fa-hand-holding-heart"></i> 5 pessoas ajudadas
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 8
+                        </button>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">LP</div>
+                        <div class="post-meta">
+                            <h4>Alan Carlos</h4>
+                            <p>@alancarlos · 2 horas atrás · Porto Alegre, RS</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-cold">
+                        <i class="fas fa-snowflake"></i> Frio Intenso
+                    </div>
+                    <div class="post-content">
+                        <p>Temperaturas abaixo de zero no centro da cidade. Posto de saúde na Rua dos Andradas está
+                            distribuindo cobertores e sopa quente para quem precisar.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        class="post-image">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> 42
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 15
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">MC</div>
+                        <div class="post-meta">
+                            <h4>Maria Clara</h4>
+                            <p>@mariaclara · 3 horas atrás · Brasília, DF</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-heat">
+                        <i class="fas fa-sun"></i> Calor Extremo
+                    </div>
+                    <div class="post-content">
+                        <p>Temperaturas acima de 40°C hoje. Recomendo que todos evitem exposição ao sol e se mantenham
+                            hidratados. Posto de saúde na Asa Sul está oferecendo água e protetor solar.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        class="post-image">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> 30
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 10
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">MC</div>
+                        <div class="post-meta">
+                            <h4>Maria Clara</h4>
+                            <p>@mariaclara · 3 horas atrás · Brasília, DF</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-heat">
+                        <i class="fas fa-sun"></i> Calor Extremo
+                    </div>
+                    <div class="post-content">
+                        <p>Temperaturas acima de 40°C hoje. Recomendo que todos evitem exposição ao sol e se mantenham
+                            hidratados. Posto de saúde na Asa Sul está oferecendo água e protetor solar.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        class="post-image">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> 30
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 10
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">MC</div>
+                        <div class="post-meta">
+                            <h4>Maria Clara</h4>
+                            <p>@mariaclara · 3 horas atrás · Brasília, DF</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-heat">
+                        <i class="fas fa-sun"></i> Calor Extremo
+                    </div>
+                    <div class="post-content">
+                        <p>Temperaturas acima de 40°C hoje. Recomendo que todos evitem exposição ao sol e se mantenham
+                            hidratados. Posto de saúde na Asa Sul está oferecendo água e protetor solar.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        class="post-image">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> 30
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 10
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">MC</div>
+                        <div class="post-meta">
+                            <h4>Maria Clara</h4>
+                            <p>@mariaclara · 3 horas atrás · Brasília, DF</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-heat">
+                        <i class="fas fa-sun"></i> Calor Extremo
+                    </div>
+                    <div class="post-content">
+                        <p>Temperaturas acima de 40°C hoje. Recomendo que todos evitem exposição ao sol e se mantenham
+                            hidratados. Posto de saúde na Asa Sul está oferecendo água e protetor solar.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        class="post-image">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> 30
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 10
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">MC</div>
+                        <div class="post-meta">
+                            <h4>Maria Clara</h4>
+                            <p>@mariaclara · 3 horas atrás · Brasília, DF</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-heat">
+                        <i class="fas fa-sun"></i> Calor Extremo
+                    </div>
+                    <div class="post-content">
+                        <p>Temperaturas acima de 40°C hoje. Recomendo que todos evitem exposição ao sol e se mantenham
+                            hidratados. Posto de saúde na Asa Sul está oferecendo água e protetor solar.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        class="post-image">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> 30
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 10
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">MC</div>
+                        <div class="post-meta">
+                            <h4>Maria Clara</h4>
+                            <p>@mariaclara · 3 horas atrás · Brasília, DF</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-heat">
+                        <i class="fas fa-sun"></i> Calor Extremo
+                    </div>
+                    <div class="post-content">
+                        <p>Temperaturas acima de 40°C hoje. Recomendo que todos evitem exposição ao sol e se mantenham
+                            hidratados. Posto de saúde na Asa Sul está oferecendo água e protetor solar.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        class="post-image">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> 30
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 10
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">MC</div>
+                        <div class="post-meta">
+                            <h4>Maria Clara</h4>
+                            <p>@mariaclara · 3 horas atrás · Brasília, DF</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-heat">
+                        <i class="fas fa-sun"></i> Calor Extremo
+                    </div>
+                    <div class="post-content">
+                        <p>Temperaturas acima de 40°C hoje. Recomendo que todos evitem exposição ao sol e se mantenham
+                            hidratados. Posto de saúde na Asa Sul está oferecendo água e protetor solar.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        class="post-image">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> 30
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 10
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">MC</div>
+                        <div class="post-meta">
+                            <h4>Maria Clara</h4>
+                            <p>@mariaclara · 3 horas atrás · Brasília, DF</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-heat">
+                        <i class="fas fa-sun"></i> Calor Extremo
+                    </div>
+                    <div class="post-content">
+                        <p>Temperaturas acima de 40°C hoje. Recomendo que todos evitem exposição ao sol e se mantenham
+                            hidratados. Posto de saúde na Asa Sul está oferecendo água e protetor solar.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        class="post-image">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> 30
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 10
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">MC</div>
+                        <div class="post-meta">
+                            <h4>Maria Clara</h4>
+                            <p>@mariaclara · 3 horas atrás · Brasília, DF</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-heat">
+                        <i class="fas fa-sun"></i> Calor Extremo
+                    </div>
+                    <div class="post-content">
+                        <p>Temperaturas acima de 40°C hoje. Recomendo que todos evitem exposição ao sol e se mantenham
+                            hidratados. Posto de saúde na Asa Sul está oferecendo água e protetor solar.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        class="post-image">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> 30
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 10
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">MC</div>
+                        <div class="post-meta">
+                            <h4>Maria Clara</h4>
+                            <p>@mariaclara · 3 horas atrás · Brasília, DF</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-heat">
+                        <i class="fas fa-sun"></i> Calor Extremo
+                    </div>
+                    <div class="post-content">
+                        <p>Temperaturas acima de 40°C hoje. Recomendo que todos evitem exposição ao sol e se mantenham
+                            hidratados. Posto de saúde na Asa Sul está oferecendo água e protetor solar.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        class="post-image">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> 30
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 10
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">MC</div>
+                        <div class="post-meta">
+                            <h4>Maria Clara</h4>
+                            <p>@mariaclara · 3 horas atrás · Brasília, DF</p>
+                        </div>
+                    </div>
+                    <div class="post-tag tag-heat">
+                        <i class="fas fa-sun"></i> Calor Extremo
+                    </div>
+                    <div class="post-content">
+                        <p>Temperaturas acima de 40°C hoje. Recomendo que todos evitem exposição ao sol e se mantenham
+                            hidratados. Posto de saúde na Asa Sul está oferecendo água e protetor solar.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        class="post-image">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> 30
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> 10
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="right-sidebar">
+            <div class="emergency-alerts">
+                <h3><i class="fas fa-exclamation-triangle"></i> Alertas de Emergência</h3>
+                <div class="alert-item">
+                    <div class="alert-title"><i class="fas fa-house-flood-water"></i> Alerta de Enchente</div>
+                    <div class="alert-location">Zona Leste de São Paulo</div>
+                    <div class="alert-time">Atualizado há 15 minutos</div>
+                </div>
+                <div class="alert-item">
+                    <div class="alert-title"><i class="fas fa-temperature-high"></i> Onda de Calor</div>
+                    <div class="alert-location">Região Nordeste do Brasil</div>
+                    <div class="alert-time">Atualizado há 1 hora</div>
+                </div>
+                <div class="alert-item">
+                    <div class="alert-title"><i class="fas fa-wind"></i> Ventos Fortes</div>
+                    <div class="alert-location">Litoral do Rio de Janeiro</div>
+                    <div class="alert-time">Atualizado há 2 horas</div>
+                </div>
+            </div>
+
+            <div class="help-requests">
+                <h3><i class="fas fa-hands-helping"></i> Pedidos de Ajuda</h3>
+                <div class="help-item">
+                    <div class="help-title"><i class="fas fa-home"></i> Preciso de abrigo</div>
+                    <div class="help-location">Rua Augusta, 500 - São Paulo, SP</div>
+                    <div class="help-resources">
+                        <span class="resource-tag">Abrigo</span>
+                        <span class="resource-tag">Comida</span>
+                        <span class="resource-tag">Água</span>
+                    </div>
+                    <div class="help-actions">
+                        <button class="help-btn">Ajudar</button>
+                    </div>
+                </div>
+                <div class="help-item">
+                    <div class="help-title"><i class="fas fa-tshirt"></i> Necessito de roupas</div>
+                    <div class="help-location">Av. Brasil, 1500 - Rio de Janeiro, RJ</div>
+                    <div class="help-resources">
+                        <span class="resource-tag">Roupas</span>
+                        <span class="resource-tag">Cobertores</span>
+                    </div>
+                    <div class="help-actions">
+                        <button class="help-btn">Ajudar</button>
+                    </div>
+                </div>
+                <div class="help-item">
+                    <div class="help-title"><i class="fas fa-first-aid"></i> Medicamentos urgentes</div>
+                    <div class="help-location">Rua das Flores, 200 - Porto Alegre, RS</div>
+                    <div class="help-resources">
+                        <span class="resource-tag">Medicamentos</span>
+                        <span class="resource-tag">Assistência médica</span>
+                    </div>
+                    <div class="help-actions">
+                        <button class="help-btn">Ajudar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>NOME</h3>
+                <p>A rede social colaborativa para emergências climáticas e apoio comunitário.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#">Sobre nós</a></li>
+                    <li><a href="#">Como funciona</a></li>
+                    <li><a href="#">Recursos</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Recursos</h3>
+                <ul>
+                    <li><a href="#">Central de Ajuda</a></li>
+                    <li><a href="#">Dicas de segurança</a></li>
+                    <li><a href="#">Guia de emergências</a></li>
+                    <li><a href="#">Parceiros</a></li>
+                    <li><a href="#">Desenvolvedores</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Termos de serviço</a></li>
+                    <li><a href="#">Política de privacidade</a></li>
+                    <li><a href="#">Política de cookies</a></li>
+                    <li><a href="#">Acessibilidade</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 NOME. Todos os direitos reservados. Desenvolvido como solução para o desafio FIAP.</p>
+        </div>
+    </footer>
+
+    <div class="bottom-navbar">
+        <div class="nav-icons">
+            <a href="/" class="nav-icon">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Mapa</span>
+            </a>
+            <a href="feed.html" class="nav-icon active">
+                <i class="fas fa-newspaper"></i>
+                <span>Feed</span>
+            </a>
+            <a class="nav-icon" id="open-report-modal" onclick="openReportModal()">
+                <div class="report-icon-mobile">
+                    <i class="fas fa-plus"></i>
+                </div>
+            </a>
+            <a href="#" class="nav-icon">
+                <i class="fas fa-bell"></i>
+                <span>Alertas</span>
+            </a>
+            <a href="#" class="nav-icon">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </a>
+        </div>
+    </div>
+    <script src="js/report.js"></script>
+    <script src="js/feed.js"></script>
+    <script src="js/feed-sidebars.js"></script>
+</body>
+
+</html>

@@ -15,13 +15,13 @@
 
 <body>
     <header>
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
             <i class="fas fa-map-marked-alt"></i>
             NOME
         </a>
 
         <ul class="nav-links">
-            <li><a href="/">Mapa</a></li>
+            <li><a href="index.html">Mapa</a></li>
             <li><a href="feed.html" class="active">Feed</a></li>
             <li><a href="#">Alertas</a></li>
             <li><a href="#">Ajuda</a></li>
@@ -44,12 +44,11 @@
         </div>
     </header>
 
-    <!-- Modal de Reporte -->
     <div class="report-modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2><i class="fas fa-exclamation-circle"></i> Reportar Evento</h2>
-                <button class="close-modal">&times;</button>
+                <button class="close-modal">×</button>
             </div>
             <div class="modal-body">
                 <form id="report-form">
@@ -192,7 +191,6 @@
             </div>
         </div>
 
-        <!-- Main Feed -->
         <div class="main-feed">
             <div class="new-post-card">
                 <div class="new-post-header">
@@ -658,7 +656,6 @@
             </div>
         </div>
 
-        <!-- Right Sidebar -->
         <div class="right-sidebar">
             <div class="emergency-alerts">
                 <h3><i class="fas fa-exclamation-triangle"></i> Alertas de Emergência</h3>
@@ -719,7 +716,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
@@ -763,13 +759,13 @@
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2023 NOME. Todos os direitos reservados. Desenvolvido como solução para o desafio FIAP.</p>
+            <p>© 2023 NOME. Todos os direitos reservados. Desenvolvido como solução para o desafio FIAP.</p>
         </div>
     </footer>
 
     <div class="bottom-navbar">
         <div class="nav-icons">
-            <a href="/" class="nav-icon">
+            <a href="index.html" class="nav-icon">
                 <i class="fas fa-map-marked-alt"></i>
                 <span>Mapa</span>
             </a>
@@ -777,7 +773,7 @@
                 <i class="fas fa-newspaper"></i>
                 <span>Feed</span>
             </a>
-            <a class="nav-icon" id="open-report-modal" onclick="openReportModal()">
+            <a class="nav-icon" id="open-report-modal-mobile" onclick="openReportModal()">
                 <div class="report-icon-mobile">
                     <i class="fas fa-plus"></i>
                 </div>

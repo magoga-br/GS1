@@ -1,4 +1,4 @@
-// Follow buttons
+// follow buttons
 document.querySelectorAll(".follow-btn").forEach((btn) => {
   btn.addEventListener("click", function () {
     const name = this.closest(".follow-item").querySelector("h4").textContent;
@@ -11,7 +11,7 @@ document.querySelectorAll(".follow-btn").forEach((btn) => {
   });
 });
 
-// Help buttons
+//help buttons
 document.querySelectorAll(".help-btn").forEach((btn) => {
   btn.addEventListener("click", function () {
     const title =this.closest(".help-item").querySelector(".help-title").textContent;

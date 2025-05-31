@@ -1,4 +1,3 @@
-// Referências aos elementos do modal
 const reportModal = document.querySelector(".report-modal");
 const openReportBtn = document.getElementById("open-report-modal");
 const closeReportBtn = document.querySelector(".close-modal");
@@ -7,30 +6,29 @@ const submitReportBtn = document.querySelector(".btn-submit");
 const reportTypeSelect = document.getElementById("report-type");
 const resourcesSection = document.getElementById("resources-section");
 
-// Funções para abrir e fechar o modal
+
 function openReportModal() {
   reportModal.classList.add("active");
-  document.body.style.overflow = "hidden"; // Impede scroll da página
+  document.body.style.overflow = "hidden"; 
 }
 
 function closeReportModal() {
   reportModal.classList.remove("active");
-  document.body.style.overflow = "auto"; // Restaura scroll da página
+  document.body.style.overflow = "auto"; 
 }
 
-// Event Listeners
 openReportBtn.addEventListener("click", openReportModal);
 closeReportBtn.addEventListener("click", closeReportModal);
 cancelReportBtn.addEventListener("click", closeReportModal);
 
-// Fechar modal clicando fora do conteúdo
+// fechar clicando fora
 reportModal.addEventListener("click", function (e) {
   if (e.target === reportModal) {
     closeReportModal();
   }
 });
 
-// Mostrar/ocultar seção de recursos baseado no tipo de reporte
+// mostrar/ocultar com base no tipo
 reportTypeSelect.addEventListener("change", function () {
   const selectedValue = this.value;
   if (selectedValue === "help" || selectedValue === "offer") {
@@ -40,7 +38,7 @@ reportTypeSelect.addEventListener("change", function () {
   }
 });
 
-// Envio do formulário
+// envio
 submitReportBtn.addEventListener("click", function () {
   const reportType = reportTypeSelect.value;
   const location = document.getElementById("report-location").value;
@@ -52,20 +50,17 @@ submitReportBtn.addEventListener("click", function () {
     return;
   }
 
-  // Simulação de envio bem-sucedido
   alert(
     "Reporte enviado com sucesso! Sua informação está ajudando a comunidade."
   );
 
-  // Resetar formulário
   document.getElementById("report-form").reset();
   resourcesSection.style.display = "none";
 
-  // Fechar modal
   closeReportModal();
 });
 
-// Interatividade dos cards de recursos
+// checkbox
 const checkboxOptions = document.querySelectorAll(".checkbox-option");
 checkboxOptions.forEach((option) => {
   option.addEventListener("click", function () {

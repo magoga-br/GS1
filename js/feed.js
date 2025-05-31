@@ -1,3 +1,4 @@
+//scroll
 let prevScrollPos = window.pageYOffset;
 
 const sidebar = document.querySelector(".right-sidebar");
@@ -16,12 +17,13 @@ window.addEventListener("scroll", () => {
   prevScrollPos = currentScrollPos;
 });
 
+//post
 const postSubmit = document.querySelector(".post-submit");
 
 postSubmit.addEventListener("click", function () {
   const textarea = document.querySelector(".new-post-content textarea");
   if (textarea.value.trim() !== "") {
-    const textUser = textarea.value; // Pega o texto do textarea
+    const textUser = textarea.value;
     const newPostHTML = `
       <div class="post-card animated-content">
         <div class="post-header">
@@ -52,17 +54,16 @@ postSubmit.addEventListener("click", function () {
       </div>
     `;
 
-    // Adiciona o novo post depois do primeiro
     document
       .querySelector(".feed-cards")
       .insertAdjacentHTML("afterbegin", newPostHTML);
-    textarea.value = ""; // Limpa o textarea
+    textarea.value = "";
   } else {
     alert("Por favor, escreva algo antes de publicar.");
   }
 });
 
-// Like buttons
+// like buttons
 document.querySelectorAll(".action-btn .fa-heart").forEach((heart) => {
   heart.addEventListener("click", function (e) {
     e.stopPropagation();

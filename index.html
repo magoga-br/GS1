@@ -4,432 +4,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOME</title>
+    <title>GetSafe - Rede Comunitária para Emergências Climáticas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/report.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header.css">
 </head>
 
 <body>
-    <div class="app-container">
-        <header>
-            <a href="index.html" class="logo">
-                <i class="fas fa-map-marked-alt"></i>
-                NOME
-            </a>
+    <header id="header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-handshake-angle"></i>
+                    <span>GetSafe</span>
+                </a>
 
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Mapa</a></li>
-                <li><a href="feed.html">Feed</a></li>
-                <li><a href="#">Alertas</a></li>
-                <li><a href="#">Ajuda</a></li>
-            </ul>
+                <ul class="nav-links d-flex justify-content-center align-items-center">
+                    <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="map.html" class="nav-link">Mapa</a></li>
+                    <li class="nav-item"><a href="feed.html" class="nav-link">Feed</a></li>
+                <!--<li class="nav-item"><a href="about.html" class="nav-link">Sobre</a></li>
+                    <li class="nav-item"><a href="help.html" class="nav-link">Ajuda</a></li> -->
+                </ul>
 
-            <div class="search-bar">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Pesquisar local ou evento...">
-            </div>
-
-            <div class="user-actions">
-                <button class="btn btn-default report-btn" id="open-report-modal">
-                    <i class="fas fa-plus"></i>
-                    <span>Reportar</span>
-                </button>
-                <div class="user-profile">
-                    <div class="user-avatar">FM</div>
-                    <span>Fabrício Magoga</span>
-                </div>
-            </div>
-        </header>
-
-        <div class="report-modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2><i class="fas fa-exclamation-circle"></i> Reportar Evento</h2>
-                    <button class="close-modal">×</button>
-                </div>
-                <div class="modal-body">
-                    <form id="report-form">
-                        <div class="form-group">
-                            <label for="report-type">Tipo de Reporte</label>
-                            <select id="report-type" required>
-                                <option value="">Selecione o tipo de evento</option>
-                                <option value="rain">Chuva (Leve/Moderada/Forte)</option>
-                                <option value="flood">Alagamento</option>
-                                <option value="heat">Calor Extremo</option>
-                                <option value="cold">Frio Intenso</option>
-                                <option value="help">Pedido de Ajuda</option>
-                                <option value="offer">Oferecer Ajuda</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="report-location">Localização</label>
-                            <input type="text" id="report-location"
-                                placeholder="Digite seu endereço ou arraste o marcador no mapa" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Nível de Urgência</label>
-                            <div class="radio-group">
-                                <div class="radio-option">
-                                    <input type="radio" id="urgent" name="urgency" value="urgent">
-                                    <label for="urgent">Urgente</label>
-                                </div>
-                                <div class="radio-option">
-                                    <input type="radio" id="moderate" name="urgency" value="moderate" checked>
-                                    <label for="moderate">Importante</label>
-                                </div>
-                                <div class="radio-option">
-                                    <input type="radio" id="info" name="urgency" value="info">
-                                    <label for="info">Informativo</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="report-details">Detalhes</label>
-                            <textarea id="report-details"
-                                placeholder="Descreva o que está acontecendo, condições específicas, recursos necessários, etc."
-                                required></textarea>
-                        </div>
-
-                        <div class="form-group" id="resources-section" style="display: none;">
-                            <label>Recursos Necessários/Oferecidos</label>
-                            <div class="checkbox-group">
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="shelter" value="shelter">
-                                    <label for="shelter">Abrigo</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="food" value="food">
-                                    <label for="food">Comida</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="water" value="water">
-                                    <label for="water">Água</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="clothes" value="clothes">
-                                    <label for="clothes">Roupas</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="transport" value="transport">
-                                    <label for="transport">Transporte</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="medical" value="medical">
-                                    <label for="medical">Assistência médica</label>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="modal-btn btn-cancel">Cancelar</button>
-                    <button class="modal-btn btn-submit">Enviar Reporte</button>
+                <div class="user-actions">
+                    <a href="login.html" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt me-2"></i>
+                        <span>Entrar</span>
+                    </a>
                 </div>
             </div>
         </div>
+    </header>
 
-        <div class="main-content">
-            <div class="map-container">
-                <div class="map-overlay"></div>
-
-                <div class="map-controls">
-                    <button class="map-btn">
-                        <i class="fas fa-plus"></i>
-                    </button>
-                    <button class="map-btn">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button class="map-btn">
-                        <i class="fas fa-crosshairs"></i>
-                    </button>
-                    <button class="map-btn">
-                        <i class="fas fa-layer-group"></i>
-                    </button>
-
-                </div>
-
-                <div class="map-filters">
-                    <button class="filter-btn active">
-                        <i class="fas fa-layer-group"></i>
-                        Tudo
-                    </button>
-                    <button class="filter-btn">
-                        <i class="fas fa-cloud-rain"></i>
-                        Chuva
-                    </button>
-                    <button class="filter-btn">
-                        <i class="fas fa-temperature-high"></i>
-                        Calor
-                    </button>
-                    <button class="filter-btn">
-                        <i class="fas fa-hands-helping"></i>
-                        Ajuda
-                    </button>
-                </div>
-
-                <div class="map-markers">
-                    <div class="marker rain" style="top: 35%; left: 50%;" data-id="1"><i class="fas fa-cloud-rain"></i>
-                    </div>
-                    <div class="marker rain" style="top: 40%; left: 50%;" data-id="2"><i class="fas fa-cloud-rain"></i>
-                    </div>
-
-                    <div class="marker heat" style="top: 30%; left: 60%;" data-id="3"><i
-                            class="fas fa-temperature-high"></i></div>
-
-                    <div class="marker cold" style="top: 70%; left: 40%;" data-id="4"><i class="fas fa-snowflake"></i>
-                    </div>
-
-                    <div class="marker flood" style="top: 30%; left: 40%;" data-id="5"><i
-                            class="fas fa-house-flood-water"></i></div>
-
-                    <div class="marker help" style="top: 35%; left: 45%;" data-id="6"><i
-                            class="fas fa-hands-helping"></i></div>
-                    <div class="marker help" style="top: 40%; left: 60%;" data-id="7"><i
-                            class="fas fa-hands-helping"></i></div>
-
-                    <div class="marker shelter" style="top: 50%; left: 45%;" data-id="8"><i class="fas fa-home"></i>
-                    </div>
-                </div>
-
-                <div class="marker-info" id="marker-info-1">
-                    <h4><i class="fas fa-cloud-rain" style="color: var(--rain);"></i> Chuva Forte</h4>
-                    <div class="info-content">
-                        <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000</p>
-                        <p><i class="fas fa-clock"></i> Reportado há 15 minutos</p>
-                        <p><i class="fas fa-comment"></i> Chuva intensa com ventos fortes. Evitar a região.</p>
-                    </div>
-                    <div class="info-footer">
-                        <div class="user-badge">
-                            <div class="user-mini-avatar">CS</div>
-                            <span>Pedro D.</span>
-                        </div>
-                        <button class="action-btn">Ver Detalhes</button>
-                    </div>
-                </div>
-
-                <div class="marker-info" id="marker-info-6">
-                    <h4><i class="fas fa-hands-helping" style="color: var(--help);"></i> Preciso de Abrigo</h4>
-                    <div class="info-content">
-                        <p><i class="fas fa-map-marker-alt"></i> Rua Augusta, 500</p>
-                        <p><i class="fas fa-clock"></i> Reportado há 30 minutos</p>
-                        <p><i class="fas fa-comment"></i> Alagamento na minha rua. Preciso de um lugar seguro para mim e
-                            meu cachorro.</p>
-                    </div>
-                    <div class="info-footer">
-                        <div class="user-badge">
-                            <div class="user-mini-avatar">JV</div>
-                            <span>João V.</span>
-                        </div>
-                        <button class="action-btn">Oferecer Ajuda</button>
-                    </div>
-                </div>
-
-                <div class="marker-info" id="marker-info-8">
-                    <h4><i class="fas fa-home" style="color: var(--shelter);"></i> Abrigo Disponível</h4>
-                    <div class="info-content">
-                        <p><i class="fas fa-map-marker-alt"></i> Rua Oscar Freire, 800</p>
-                        <p><i class="fas fa-clock"></i> Disponível agora</p>
-                        <p><i class="fas fa-comment"></i> Tenho espaço para até 4 pessoas. Ofereço água, comida e roupas
-                            secas.</p>
-                    </div>
-                    <div class="info-footer">
-                        <div class="user-badge">
-                            <div class="user-mini-avatar">LA</div>
-                            <span>Lucas A.</span>
-                        </div>
-                        <button class="action-btn">Solicitar Abrigo</button>
-                    </div>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Proteção Comunitária contra Emergências Climáticas</h1>
+                <p>Conectamos pessoas em situações de risco com quem pode ajudar, criando uma rede de apoio rápido e
+                    eficiente durante eventos climáticos extremos.</p>
+                <div class="hero-btns">
+                    <a href="map.html" class="btn btn-primary">Acessar o Mapa</a>
+                    <a href="#como-funciona" class="btn btn-secondary">Saiba Mais</a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="feed-container">
-                <div class="feed-header">
-                    <h2>Atividades Recentes</h2>
-                </div>
-
-                <div class="feed-tabs">
-                    <div class="feed-tab active">Todos</div>
-                    <div class="feed-tab">Eventos</div>
-                    <div class="feed-tab">Pedidos</div>
-                    <div class="feed-tab">Ofertas</div>
-                </div>
-
-                <div class="new-post">
-                    <div class="new-post-header">
-                        <div class="new-post-avatar">FM</div>
-                        <div style="flex: 1;">
-                            <h4>Fabrício Magoga</h4>
+    <section class="value-props">
+        <div class="container">
+            <div class="section-title">
+                <h2>Por que usar o GetSafe?</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="prop-card floating">
+                        <div class="prop-icon">
+                            <i class="fas fa-bolt"></i>
                         </div>
-                    </div>
-                    <div class="new-post-content">
-                        <textarea
-                            placeholder="O que está acontecendo? Reporte um evento, peça ou ofereça ajuda..."></textarea>
-                    </div>
-                    <div class="new-post-actions">
-                        <div class="post-options">
-                            <div class="post-option">
-                                <i class="fas fa-image"></i>
-                            </div>
-                            <div class="post-option">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="post-option">
-                                <i class="fas fa-tag"></i>
-                            </div>
-                        </div>
-                        <button class="post-submit">Publicar</button>
+                        <h3 class="prop-title">Resposta Rápida</h3>
+                        <p>Alertas em tempo real e comunicação direta com voluntários e vizinhos durante emergências.
+                        </p>
                     </div>
                 </div>
-
-                <div class="feed-content">
-                    <div class="post-card">
-                        <div class="post-header">
-                            <div class="post-avatar">PD</div>
-                            <div class="post-meta">
-                                <h4>Pedro Dalmas</h4>
-                                <p>Há 15 min · São Paulo, SP</p>
-                            </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="prop-card floating" style="animation-delay: 0.2s;">
+                        <div class="prop-icon">
+                            <i class="fas fa-users"></i>
                         </div>
-                        <div class="post-tag tag-rain">
-                            <i class="fas fa-cloud-rain"></i> Chuva Forte
-                        </div>
-                        <div class="post-content">
-                            <p>Chuva muito forte na região da Paulista com risco de alagamento. Evitem a avenida no
-                                momento. Água já está acumulando na altura do número 900.</p>
-                        </div>
-                        <div class="post-actions">
-                            <button class="action-btn-small">
-                                <i class="far fa-heart"></i> 24
-                            </button>
-                            <button class="action-btn-small">
-                                <i class="far fa-comment"></i> 7
-                            </button>
-                            <button class="action-btn-small">
-                                <i class="fas fa-share"></i> Compartilhar
-                            </button>
-                        </div>
+                        <h3 class="prop-title">Rede Comunitária</h3>
+                        <p>Conecte-se com pessoas próximas que podem oferecer abrigo, recursos ou assistência.</p>
                     </div>
-
-                    <div class="post-card">
-                        <div class="post-header">
-                            <div class="post-avatar">JV</div>
-                            <div class="post-meta">
-                                <h4>João Vitor</h4>
-                                <p>Há 45 min · Rio de Janeiro, RJ</p>
-                            </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="prop-card floating" style="animation-delay: 0.4s;">
+                        <div class="prop-icon">
+                            <i class="fas fa-map-marked-alt"></i>
                         </div>
-                        <div class="post-tag tag-help">
-                            <i class="fas fa-hands-helping"></i> Pedido de Ajuda
-                        </div>
-                        <div class="post-content">
-                            <p>Preciso de abrigo urgente! Minha casa está alagando e tenho uma criança de 2 anos. Alguém
-                                pode ajudar? Estamos na Rua Augusta, 500.</p>
-                            <p style="margin-top: 10px;"><strong>Recursos necessários:</strong> Abrigo temporário,
-                                comida, água</p>
-                        </div>
-                        <div class="post-actions">
-                            <button class="action-btn-small">
-                                <i class="fas fa-hand-holding-heart"></i> Oferecer Ajuda (3)
-                            </button>
-                            <button class="action-btn-small">
-                                <i class="far fa-comment"></i> 12
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="post-card">
-                        <div class="post-header">
-                            <div class="post-avatar">LA</div>
-                            <div class="post-meta">
-                                <h4>Lucas Akira</h4>
-                                <p>Há 1 hora · Salvador, BA</p>
-                            </div>
-                        </div>
-                        <div class="post-tag tag-offer">
-                            <i class="fas fa-home"></i> Oferecendo Abrigo
-                        </div>
-                        <div class="post-content">
-                            <p>Tenho espaço disponível em minha casa para até 4 pessoas afetadas pela enchente. Ofereço
-                                abrigo, água e comida. Localização: Rua Oscar Freire, 800.</p>
-                        </div>
-                        <div class="post-actions">
-                            <button class="action-btn-small">
-                                <i class="fas fa-hand-holding-heart"></i> 5 pessoas ajudadas
-                            </button>
-                            <button class="action-btn-small">
-                                <i class="far fa-comment"></i> 8
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="post-card">
-                        <div class="post-header">
-                            <div class="post-avatar">AC</div>
-                            <div class="post-meta">
-                                <h4>Alan Carlos</h4>
-                                <p>Há 2 horas · Porto Alegre, RS</p>
-                            </div>
-                        </div>
-                        <div class="post-tag tag-cold">
-                            <i class="fas fa-snowflake"></i> Frio Intenso
-                        </div>
-                        <div class="post-content">
-                            <p>Temperaturas abaixo de zero no centro da cidade. Posto de saúde na Rua dos Andradas está
-                                distribuindo cobertores e sopa quente para quem precisar.</p>
-                        </div>
-                        <div class="post-actions">
-                            <button class="action-btn-small">
-                                <i class="far fa-heart"></i> 42
-                            </button>
-                            <button class="action-btn-small">
-                                <i class="far fa-comment"></i> 15
-                            </button>
-                            <button class="action-btn-small">
-                                <i class="fas fa-share"></i> Compartilhar
-                            </button>
-                        </div>
+                        <h3 class="prop-title">Visualização Geográfica</h3>
+                        <p>Mapa interativo mostra eventos climáticos, abrigos e pontos de ajuda na sua região.</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="bottom-navbar">
-            <div class="nav-icons">
-                <a href="index.html" class="nav-icon active">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <span>Mapa</span>
-                </a>
-                <a href="feed.html" class="nav-icon">
-                    <i class="fas fa-newspaper"></i>
-                    <span>Feed</span>
-                </a>
-                <a href="#" class="nav-icon" id="open-report-modal-bottom">
-                    <div class="report-icon-mobile">
-                        <i class="fas fa-plus"></i>
+    </section>
+
+    <section class="how-it-works" id="como-funciona">
+        <div class="container">
+            <div class="section-title">
+                <h2>Como Funciona</h2>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Reporte ou Consulte</h3>
+                        <p>Registre eventos climáticos na sua área ou verifique os já reportados no mapa. Informe a
+                            gravidade e recursos necessários para ajudar outros a entender a situação.</p>
                     </div>
-                </a>
-                <a href="#" class="nav-icon">
-                    <i class="fas fa-bell"></i>
-                    <span>Alertas</span>
-                </a>
-                <a href="#" class="nav-icon">
-                    <i class="fas fa-user"></i>
-                    <span>Perfil</span>
-                </a>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Conecte-se com a Comunidade</h3>
+                        <p>Encontre pessoas próximas oferecendo ajuda ou precisando de assistência. Troque mensagens
+                            seguras para coordenar apoio mútuo.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Compartilhe Informações</h3>
+                        <p>Atualize a situação em tempo real, compartilhe dicas de segurança e alerte sobre áreas de
+                            risco através do feed comunitário.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script src="js/help.js"></script>
-    <script src="js/index-feed.js"></script>
-    <script src="js/map.js"></script>
-    <script src="js/report.js"></script>
+    <section class="emergency-types">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tipos de Emergências</h2>
+            </div>
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-header" style="background: var(--rain);">
+                        <div class="type-icon">
+                            <i class="fas fa-cloud-showers-heavy"></i>
+                        </div>
+                        <h3 class="type-title">Chuvas Intensas</h3>
+                    </div>
+                    <div class="type-content">
+                        <p>Alertas sobre tempestades, risco de alagamentos e deslizamentos em sua região.</p>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <div class="type-header" style="background: var(--heat);">
+                        <div class="type-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h3 class="type-title">Calor Extremo</h3>
+                    </div>
+                    <div class="type-content">
+                        <p>Informações sobre ondas de calor e locais com ar condicionado disponível ao público.</p>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <div class="type-header" style="background: var(--flood);">
+                        <div class="type-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h3 class="type-title">Inundações</h3>
+                    </div>
+                    <div class="type-content">
+                        <p>Ruas alagadas, pontos de transbordamento e áreas de risco identificadas pela comunidade.</p>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <div class="type-header" style="background: var(--cold);">
+                        <div class="type-icon">
+                            <i class="fas fa-snowflake"></i>
+                        </div>
+                        <h3 class="type-title">Frio Intenso</h3>
+                    </div>
+                    <div class="type-content">
+                        <p>Locais distribuindo cobertores e abrigos aquecidos durante ondas de frio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Pronto para se juntar à nossa comunidade?</h2>
+                <p>Juntos podemos criar redes mais resilientes e preparadas para enfrentar emergências climáticas.</p>
+                <a href="feed.html" class="btn">Entrar na comunidade</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GetSafe</h3>
+                    <p>A rede social colaborativa para emergências climáticas e apoio comunitário.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Navegação</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Início</a></li>
+                        <li><a href="map.html"><i class="fas fa-chevron-right"></i> Mapa</a></li>
+                        <li><a href="feed.html"><i class="fas fa-chevron-right"></i> Feed</a></li>
+                        <!-- <li><a href="#"><i class="fas fa-chevron-right"></i> Sobre</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Ajuda</a></li> -->
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Dicas de Segurança</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Guia de Preparação</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Voluntarios</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Parceiros</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Termos de Uso</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Política de Privacidade</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>© 2025 GetSafe. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -4,27 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOME</title>
+    <title>GetSafe</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/feed.css">
-    <link rel="stylesheet" href="css/report.css">
+    <link rel="stylesheet" href="/css/feed.css">
+    <link rel="stylesheet" href="/css/report.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="shortcut icon" href="" type="image/x-icon">
 </head>
 
 <body>
     <header>
         <a href="index.html" class="logo">
-            <i class="fas fa-map-marked-alt"></i>
-            NOME
+            <i class="fa-solid fa-comments"></i>
+            GetSafe
         </a>
 
-        <ul class="nav-links">
-            <li><a href="index.html">Mapa</a></li>
-            <li><a href="feed.html" class="active">Feed</a></li>
-            <li><a href="#">Alertas</a></li>
-            <li><a href="#">Ajuda</a></li>
+        <ul class="nav-links d-none d-lg-flex">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="map.html" class="nav-link">Mapa</a></li>
+            <li class="nav-item"><a href="feed.html" class="nav-link active">Feed</a></li>
+            <!-- <li class="nav-item"><a href="#" class="nav-link">Sobre</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Ajuda</a></li> -->
         </ul>
 
         <div class="search-bar">
@@ -37,9 +40,11 @@
                 <i class="fas fa-plus"></i>
                 <span>Reportar</span>
             </button>
-            <div class="user-profile">
-                <div class="user-avatar">FM</div>
-                <span>Fabrício Magoga</span>
+            <div>
+                <a class="user-profile" href="login.html">
+                    <div class="user-avatar">FM</div>
+                    <span>Fabrício Magoga</span>
+                </a>
             </div>
         </div>
     </header>
@@ -716,56 +721,9 @@
         </div>
     </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>NOME</h3>
-                <p>A rede social colaborativa para emergências climáticas e apoio comunitário.</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h3>Links Rápidos</h3>
-                <ul>
-                    <li><a href="#">Sobre nós</a></li>
-                    <li><a href="#">Como funciona</a></li>
-                    <li><a href="#">Recursos</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Carreiras</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Recursos</h3>
-                <ul>
-                    <li><a href="#">Central de Ajuda</a></li>
-                    <li><a href="#">Dicas de segurança</a></li>
-                    <li><a href="#">Guia de emergências</a></li>
-                    <li><a href="#">Parceiros</a></li>
-                    <li><a href="#">Desenvolvedores</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Termos de serviço</a></li>
-                    <li><a href="#">Política de privacidade</a></li>
-                    <li><a href="#">Política de cookies</a></li>
-                    <li><a href="#">Acessibilidade</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>© 2023 NOME. Todos os direitos reservados. Desenvolvido como solução para o desafio FIAP.</p>
-        </div>
-    </footer>
-
     <div class="bottom-navbar">
         <div class="nav-icons">
-            <a href="index.html" class="nav-icon">
+            <a href="map.html" class="nav-icon">
                 <i class="fas fa-map-marked-alt"></i>
                 <span>Mapa</span>
             </a>

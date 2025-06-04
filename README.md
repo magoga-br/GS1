@@ -1,6 +1,6 @@
 # 🌐 GetSafe – Rede Comunitária para Emergências Climáticas
 
-GetSafe é uma plataforma web colaborativa que conecta pessoas em situações de risco com quem pode ajudar e contato direto com órgãos responsáveis, durante desastres naturais como enchentes, chuvas extremas, calor intenso ou frio severo. A proposta é construir uma rede solidária digital que promova respostas rápidas e eficientes diante de eventos climáticos extremos.
+GetSafe é uma plataforma web colaborativa que conecta pessoas em situações de risco com quem pode ajudar e contato direto com órgãos responsáveis, durante desastres naturais como enchentes, chuvas extremas, calor intenso ou frio severo. A proposta é construir uma rede solidária digital que promova respostas rápidas e eficientes diante de eventos climáticos acentuados.
 
 ## 🗂️ Estrutura do Projeto
 

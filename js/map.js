@@ -46,3 +46,49 @@ filterBtns.forEach((btn) => {
     const filterType = this.textContent.trim().toLowerCase();
   });
 });
+
+let zoom = 1;
+const mapImage = document.getElementById("map-image");
+const markersContainer = document.getElementById("markers-container");
+const allMarkers = Array.from(document.querySelectorAll(".marker"));
+const mapContainer = document.querySelector(".map-container");
+
+// Armazena as posições originais dos marcadores
+document.addEventListener("DOMContentLoaded", function() {
+    allMarkers.forEach(marker => {
+        const rect = marker.getBoundingClientRect();
+        const containerRect = mapContainer.getBoundingClientRect();
+        
+        // Calcula a posição relativa ao container (em porcentagem)
+        const originalLeft = ((rect.left - containerRect.left) / containerRect.width) * 100;
+        const originalTop = ((rect.top - containerRect.top) / containerRect.height) * 100;
+        
+        marker.dataset.originalLeft = originalLeft;
+        marker.dataset.originalTop = originalTop;
+    });
+});
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+const allMarkersOnMap = document.querySelectorAll(".map-markers .marker");
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    filterButtons.forEach((btn) => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    const selectedFilter = button.dataset.filter;
+
+    allMarkersOnMap.forEach((marker) => {
+      if (
+        selectedFilter === "all" ||
+        marker.classList.contains(selectedFilter)
+      ) {
+        marker.style.visibility = "visible";
+        marker.style.opacity = "1";
+      } else {
+        marker.style.visibility = "hidden";
+        marker.style.opacity = "0";
+      }
+    });
+  });
+});

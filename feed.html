@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GetSafe</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="/css/feed.css">
-    <link rel="stylesheet" href="/css/report.css">
-    <link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/feed.css">
+<link rel="stylesheet" href="css/report.css">
+<link rel="stylesheet" href="css/header.css">
+
     <link rel="shortcut icon" href="" type="image/x-icon">
 </head>
 
@@ -141,60 +140,67 @@
 
     <div class="container">
         <div class="sidebar">
-            <div class="sidebar-menu">
-                <div class="menu-item active">
-                    <i class="fas fa-home"></i>
-                    <span>Início</span>
-                </div>
-                <div class="menu-item">
-                    <i class="fas fa-hashtag"></i>
-                    <span>Explorar</span>
-                </div>
-                <div class="menu-item">
-                    <i class="fas fa-bell"></i>
-                    <span>Notificações</span>
-                </div>
-                <div class="menu-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>Mensagens</span>
-                </div>
-                <div class="menu-item">
-                    <i class="fas fa-user-friends"></i>
-                    <span>Comunidades</span>
-                </div>
-                <div class="menu-item">
-                    <i class="fas fa-user-circle"></i>
-                    <span>Perfil</span>
-                </div>
-            </div>
-            <div class="who-to-follow">
-                <h3>Quem seguir</h3>
-                <div class="follow-item">
-                    <div class="follow-avatar">CD</div>
-                    <div class="follow-info">
-                        <h4>Defesa Civil</h4>
-                        <p>@defesaciviloficial</p>
-                    </div>
-                    <button class="follow-btn">Seguir</button>
-                </div>
-                <div class="follow-item">
-                    <div class="follow-avatar">IN</div>
-                    <div class="follow-info">
-                        <h4>INMET</h4>
-                        <p>@inmet_oficial</p>
-                    </div>
-                    <button class="follow-btn">Seguir</button>
-                </div>
-                <div class="follow-item">
-                    <div class="follow-avatar">CV</div>
-                    <div class="follow-info">
-                        <h4>Cruz Vermelha</h4>
-                        <p>@cruzvermelhabr</p>
-                    </div>
-                    <button class="follow-btn">Seguir</button>
-                </div>
-            </div>
-        </div>
+  
+  <!-- Menu principal fixo no topo -->
+  <div class="sidebar-menu">
+    <div class="menu-item active">
+      <i class="fas fa-home"></i>
+      <span>Início</span>
+    </div>
+    <div class="menu-item">
+      <i class="fas fa-hashtag"></i>
+      <span>Explorar</span>
+    </div>
+    <div class="menu-item">
+      <i class="fas fa-bell"></i>
+      <span>Notificações</span>
+    </div>
+    <div class="menu-item">
+      <i class="fas fa-envelope"></i>
+      <span>Mensagens</span>
+    </div>
+    <div class="menu-item">
+      <i class="fas fa-user-friends"></i>
+      <span>Comunidades</span>
+    </div>
+    <div class="menu-item">
+      <i class="fas fa-user-circle"></i>
+      <span>Perfil</span>
+    </div>
+  </div>
+
+  <!-- Quem seguir (fixo abaixo do menu) -->
+  <div class="who-to-follow sticky-follow">
+    <h3>Quem seguir</h3>
+
+    <div class="follow-item">
+      <div class="follow-avatar">CD</div>
+      <div class="follow-info">
+        <h4>Defesa Civil</h4>
+        <p>@defesaciviloficial</p>
+      </div>
+      <button class="follow-btn">Seguir</button>
+    </div>
+
+    <div class="follow-item">
+      <div class="follow-avatar">IN</div>
+      <div class="follow-info">
+        <h4>INMET</h4>
+        <p>@inmet_oficial</p>
+      </div>
+      <button class="follow-btn">Seguir</button>
+    </div>
+
+    <div class="follow-item">
+      <div class="follow-avatar">CV</div>
+      <div class="follow-info">
+        <h4>Cruz Vermelha</h4>
+        <p>@cruzvermelhabr</p>
+      </div>
+      <button class="follow-btn">Seguir</button>
+    </div>
+  </div>
+</div>
 
         <div class="main-feed">
             <div class="new-post-card">

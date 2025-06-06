@@ -46,5 +46,3 @@ Desenvolvido por
 Global Solution 1º Semestre - FIAP 2025
 
 ---
-
-Para dúvidas ou sugestões, utilize a página "Fale Conosco" no site.

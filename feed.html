@@ -2,45 +2,33 @@
 <html lang="pt-BR">
 
 <head>
-    <!-- Metadados essenciais e configuração da página -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GetSafe</title>
 
-    <!-- Importação da biblioteca de ícones Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Importação das fontes Poppins e Roboto do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     
-    <!-- Links para as folhas de estilo CSS locais -->
     <link rel="stylesheet" href="css/feed.css">
     <link rel="stylesheet" href="css/report.css">
     <link rel="stylesheet" href="css/header.css">
 
-    <!-- Ícone da aba do navegador (favicon) -->
     <link rel="shortcut icon" href="" type="image/x-icon">
 </head>
 
 <body>
-    <!-- Cabeçalho principal da página -->
     <header>
-        <!-- Logo do site com link para a página inicial -->
         <a href="index.html" class="logo">
             <i class="fa-solid fa-comments"></i>
             GetSafe
         </a>
 
-        <!-- Lista de links de navegação para desktop -->
         <ul class="nav-links d-none d-lg-flex">
             <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="map.html" class="nav-link">Mapa</a></li>
             <li class="nav-item"><a href="feed.html" class="nav-link active">Feed</a></li>
-            <!-- Links de navegação desativados temporariamente -->
-            <!-- <li class="nav-item"><a href="#" class="nav-link">Sobre</a></li> -->
-            <!-- <li class="nav-item"><a href="#" class="nav-link">Ajuda</a></li> -->
         </ul>
 
-        <!-- Barra de pesquisa -->
         <div class="search-bar">
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Pesquisar local ou evento...">
@@ -61,10 +49,8 @@
         </div>
     </header>
 
-    <!-- Modal (janela pop-up) para reportar um novo evento -->
     <div class="report-modal">
         <div class="modal-content">
-            <!-- Cabeçalho do modal -->
             <div class="modal-header">
                 <h2><i class="fas fa-exclamation-circle"></i> Reportar Evento</h2>
                 <button class="close-modal">×</button>
@@ -72,7 +58,6 @@
             <!-- Corpo do modal com o formulário de reporte -->
             <div class="modal-body">
                 <form id="report-form">
-                    <!-- Campo para selecionar o tipo de reporte -->
                     <div class="form-group">
                         <label for="report-type">Tipo de Reporte</label>
                         <select id="report-type" required>
@@ -86,14 +71,12 @@
                         </select>
                     </div>
 
-                    <!-- Campo para inserir a localização -->
                     <div class="form-group">
                         <label for="report-location">Localização</label>
                         <input type="text" id="report-location"
                             placeholder="Digite seu endereço ou arraste o marcador no mapa" required>
                     </div>
 
-                    <!-- Campo para selecionar o nível de urgência -->
                     <div class="form-group">
                         <label>Nível de Urgência</label>
                         <div class="radio-group">
@@ -112,7 +95,6 @@
                         </div>
                     </div>
 
-                    <!-- Campo para detalhar o evento -->
                     <div class="form-group">
                         <label for="report-details">Detalhes</label>
                         <textarea id="report-details"
@@ -120,7 +102,6 @@
                             required></textarea>
                     </div>
 
-                    <!-- Seção para selecionar recursos, visível apenas para pedidos/ofertas de ajuda -->
                     <div class="form-group" id="resources-section" style="display: none;">
                         <label>Recursos Necessários/Oferecidos</label>
                         <div class="checkbox-group">
@@ -152,7 +133,6 @@
                     </div>
                 </form>
             </div>
-            <!-- Rodapé do modal com botões de ação -->
             <div class="modal-footer">
                 <button class="modal-btn btn-cancel">Cancelar</button>
                 <button class="modal-btn btn-submit">Enviar Reporte</button>
@@ -160,12 +140,9 @@
         </div>
     </div>
 
-    <!-- Container principal que agrupa as três colunas: sidebar, feed e right-sidebar -->
     <div class="container">
-        <!-- Barra lateral esquerda -->
         <div class="sidebar">
   
-          <!-- Menu principal fixo no topo -->
           <div class="sidebar-menu">
             <div class="menu-item active">
               <i class="fas fa-home"></i>
@@ -193,7 +170,6 @@
             </div>
           </div>
         
-          <!-- Seção "Quem seguir" (fixo abaixo do menu) -->
           <div class="who-to-follow sticky-follow">
             <h3>Quem seguir</h3>
         
@@ -226,7 +202,6 @@
           </div>
         </div>
 
-        <!-- Coluna central com o feed de publicações -->
         <div class="main-feed">
             <!-- Card para criar uma nova publicação -->
             <div class="new-post-card">
@@ -258,9 +233,7 @@
 
             <!-- Container para os cards do feed -->
             <div class="feed-cards">
-                <!-- Início de um card de publicação (exemplo) -->
                 <div class="post-card">
-                    <!-- Cabeçalho da publicação com avatar, nome, @usuário, tempo e local -->
                     <div class="post-header">
                         <div class="post-avatar">PD</div>
                         <div class="post-meta">
@@ -268,32 +241,27 @@
                             <p>@pedrodalmas · 15 min atrás · São Paulo, SP</p>
                         </div>
                     </div>
-                    <!-- Tag que identifica o tipo de publicação -->
                     <div class="post-tag tag-rain">
                         <i class="fas fa-cloud-rain"></i> Chuva Forte
                     </div>
-                    <!-- Conteúdo em texto da publicação -->
                     <div class="post-content">
                         <p>Chuva muito forte na região da Paulista com risco de alagamento. Evitem a avenida no momento.
                             Água já está acumulando na altura do número 900.</p>
                     </div>
-                    <!-- Imagem da publicação -->
                     <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
                         class="post-image">
-                    <!-- Ações da publicação (curtir, comentar, compartilhar) -->
                     <div class="post-actions">
                         <button class="action-btn">
-                            <i class="far fa-heart"></i> 24
+                            <i class="far fa-heart"></i> <span>24</span>
                         </button>
                         <button class="action-btn">
-                            <i class="far fa-comment"></i> 7
+                            <i class="far fa-comment"></i> <span>7</span>
                         </button>
                         <button class="action-btn">
                             <i class="fas fa-share"></i> Compartilhar
                         </button>
                     </div>
                 </div>
-                <!-- Fim de um card de publicação -->
 
                 <!-- Card de Pedido de Ajuda -->
                 <div class="post-card">
@@ -317,10 +285,10 @@
                     </div>
                     <div class="post-actions">
                         <button class="action-btn">
-                            <i class="fas fa-hand-holding-heart"></i> Oferecer Ajuda (3)
+                            <i class="fas fa-hand-holding-heart"></i> Oferecer Ajuda (<span>3</span>)
                         </button>
                         <button class="action-btn">
-                            <i class="far fa-comment"></i> 12
+                            <i class="far fa-comment"></i> <span>12</span>
                         </button>
                     </div>
                 </div>
@@ -344,15 +312,14 @@
                     </div>
                     <div class="post-actions">
                         <button class="action-btn">
-                            <i class="fas fa-hand-holding-heart"></i> 5 pessoas ajudadas
+                            <i class="fas fa-hand-holding-heart"></i> <span>5</span> pessoas ajudadas
                         </button>
                         <button class="action-btn">
-                            <i class="far fa-comment"></i> 8
+                            <i class="far fa-comment"></i> <span>8</span>
                         </button>
                     </div>
                 </div>
                 
-                <!-- Demais cards do feed (estrutura similar aos anteriores) -->
                 <div class="post-card">
                     <div class="post-header">
                         <div class="post-avatar">LP</div>
@@ -372,10 +339,10 @@
                         class="post-image">
                     <div class="post-actions">
                         <button class="action-btn">
-                            <i class="far fa-heart"></i> 42
+                            <i class="far fa-heart"></i> <span>42</span>
                         </button>
                         <button class="action-btn">
-                            <i class="far fa-comment"></i> 15
+                            <i class="far fa-comment"></i> <span>15</span>
                         </button>
                         <button class="action-btn">
                             <i class="fas fa-share"></i> Compartilhar
@@ -402,10 +369,10 @@
                         class="post-image">
                     <div class="post-actions">
                         <button class="action-btn">
-                            <i class="far fa-heart"></i> 30
+                            <i class="far fa-heart"></i> <span>30</span>
                         </button>
                         <button class="action-btn">
-                            <i class="far fa-comment"></i> 10
+                            <i class="far fa-comment"></i> <span>10</span>
                         </button>
                         <button class="action-btn">
                             <i class="fas fa-share"></i> Compartilhar
@@ -417,7 +384,6 @@
 
         <!-- Barra lateral direita -->
         <div class="right-sidebar">
-            <!-- Seção de Alertas de Emergência -->
             <div class="emergency-alerts">
                 <h3><i class="fas fa-exclamation-triangle"></i> Alertas de Emergência</h3>
                 <div class="alert-item">
@@ -437,11 +403,10 @@
                 </div>
             </div>
 
-            <!-- Seção de Pedidos de Ajuda -->
             <div class="help-requests">
                 <h3><i class="fas fa-hands-helping"></i> Pedidos de Ajuda</h3>
                 <div class="help-item">
-                    <div class="help-title"><i class="fas fa-home"></i> Preciso de abrigo</div>
+                    <div class="help-title"><i class="fas fa-home"></i>Preciso de abrigo</div>
                     <div class="help-location">Rua Augusta, 500 - São Paulo, SP</div>
                     <div class="help-resources">
                         <span class="resource-tag">Abrigo</span>
@@ -453,7 +418,7 @@
                     </div>
                 </div>
                 <div class="help-item">
-                    <div class="help-title"><i class="fas fa-tshirt"></i> Necessito de roupas</div>
+                    <div class="help-title"><i class="fas fa-tshirt"></i>Necessito de roupas</div>
                     <div class="help-location">Av. Brasil, 1500 - Rio de Janeiro, RJ</div>
                     <div class="help-resources">
                         <span class="resource-tag">Roupas</span>
@@ -464,7 +429,7 @@
                     </div>
                 </div>
                 <div class="help-item">
-                    <div class="help-title"><i class="fas fa-first-aid"></i> Medicamentos urgentes</div>
+                    <div class="help-title"><i class="fas fa-first-aid"></i>Medicamentos urgentes</div>
                     <div class="help-location">Rua das Flores, 200 - Porto Alegre, RS</div>
                     <div class="help-resources">
                         <span class="resource-tag">Medicamentos</span>
@@ -505,10 +470,9 @@
         </div>
     </div>
 
-    <!-- Links para os arquivos JavaScript no final do body para melhor performance -->
-    <script src="js/report.js"></script> <!-- Script para a funcionalidade do modal de reporte -->
-    <script src="js/feed.js"></script> <!-- Script para a funcionalidade do feed (ex: postar) -->
-    <script src="js/feed-sidebars.js"></script> <!-- Script para a funcionalidade das barras laterais -->
+    <script src="js/report.js"></script>
+    <script src="js/feed.js"></script>
+    <script src="js/feed-sidebars.js"></script>
 </body>
 
 </html>

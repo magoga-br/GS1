@@ -61,7 +61,6 @@ function carregarCidades() {
 
 selectEstado.addEventListener("change", carregarCidades);
 document.addEventListener("DOMContentLoaded", carregarEstados);
-document.addEventListener("DOMContentLoaded", carregarCidades);
 
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("signup-form");
@@ -69,59 +68,80 @@ document.addEventListener("DOMContentLoaded", function () {
   const confirmPassword = document.getElementById("confirm-password");
   const strengthBar = document.getElementById("password-strength");
 
-  // Validação de força da senha
   password.addEventListener("input", function () {
     const strength = calculatePasswordStrength(password.value);
     strengthBar.style.width = strength + "%";
-
-    if (strength < 40) {
-      strengthBar.style.background = "#ef4444";
-    } else if (strength < 70) {
-      strengthBar.style.background = "#f59e0b";
-    } else {
-      strengthBar.style.background = "#10b981";
-    }
+    if (strength < 40) strengthBar.style.background = "#ef4444";
+    else if (strength < 70) strengthBar.style.background = "#f59e0b";
+    else strengthBar.style.background = "#10b981";
   });
 
-  // Função para calcular força da senha
   function calculatePasswordStrength(pass) {
     let strength = 0;
-
-    // Comprimento
     if (pass.length > 7) strength += 25;
     if (pass.length > 11) strength += 15;
-
-    // Caracteres diferentes
     if (/[A-Z]/.test(pass)) strength += 15;
     if (/[a-z]/.test(pass)) strength += 15;
     if (/[0-9]/.test(pass)) strength += 15;
     if (/[^A-Za-z0-9]/.test(pass)) strength += 15;
-
     return Math.min(strength, 100);
   }
 
-  // Validação do formulário
   form.addEventListener("submit", function (e) {
-    e.preventDefault();
+    e.preventDefault(); 
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
     const phone = document.getElementById("phone").value;
-    const location = document.getElementById("location").value;
+    const estado = document.getElementById("selectEstado").value;
+    const cidade = document.getElementById("selectCidade").value;
     const passwordValue = password.value;
     const confirmPasswordValue = confirmPassword.value;
+    const terms = document.getElementById("terms").checked;
 
-    // Validação básica
-    if (
-      !name ||
-      !email ||
-      !phone ||
-      !location ||
-      !passwordValue ||
-      !confirmPasswordValue
-    ) {
-      alert("Por favor, preencha todos os campos.");
+    if (!name) {
+      alert("Por favor, preencha o campo Nome.");
+      return; 
+    }
+
+    if (!email) {
+      alert("Por favor, preencha o campo E-mail.");
       return;
+    }
+
+    if (!phone) {
+      alert("Por favor, preencha o campo Telefone.");
+      return;
+    }
+    
+    if (phone.replace(/\D/g, '').length < 10) {
+      alert("Por favor, insira um número de telefone válido.");
+      return;
+    }
+
+    if (!estado) {
+      alert("Por favor, selecione um Estado.");
+      return;
+    }
+
+    if (!cidade) {
+      alert("Por favor, selecione uma Cidade.");
+      return;
+    }
+
+    if (!passwordValue) {
+      alert("Por favor, preencha o campo Senha.");
+      return;
+    }
+
+    if (passwordValue.length < 8 || !/[A-Z]/.test(passwordValue) || !/[a-z]/.test(passwordValue) || !/[0-9]/.test(passwordValue)) {
+      alert("A senha não atende aos requisitos: deve ter pelo menos 8 caracteres, incluindo letras maiúsculas, minúsculas e números.");
+      return;
+    }
+
+    if (!confirmPasswordValue) {
+        alert("Por favor, confirme sua senha.");
+        return;
     }
 
     if (passwordValue !== confirmPasswordValue) {
@@ -129,40 +149,25 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (passwordValue.length < 8) {
-      alert("A senha deve ter pelo menos 8 caracteres.");
+    if (!terms) {
+      alert("Você precisa aceitar os Termos de Serviço e a Política de Privacidade.");
       return;
     }
 
-    if (!document.getElementById("terms").checked) {
-      alert("Você precisa aceitar os termos e condições.");
-      return;
-    }
-
-    // cadastro feito
     alert("Cadastro realizado com sucesso! Redirecionando...");
     setTimeout(() => {
       window.location.href = "feed.html";
     }, 1000);
   });
 
-  // formatação do numero
   const phoneInput = document.getElementById("phone");
   phoneInput.addEventListener("input", function (e) {
     let value = e.target.value.replace(/\D/g, "");
-
     if (value.length > 11) value = value.slice(0, 11);
-
-    if (value.length > 10) {
-      value = value.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
-    } else if (value.length > 6) {
-      value = value.replace(/^(\d{2})(\d{4})(\d{0,4})$/, "($1) $2-$3");
-    } else if (value.length > 2) {
-      value = value.replace(/^(\d{2})(\d{0,5})$/, "($1) $2");
-    } else {
-      value = value.replace(/^(\d*)$/, "($1");
-    }
-
+    if (value.length > 10) value = value.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
+    else if (value.length > 6) value = value.replace(/^(\d{2})(\d{4})(\d{0,4})$/, "($1) $2-$3");
+    else if (value.length > 2) value = value.replace(/^(\d{2})(\d{0,5})$/, "($1) $2");
+    else value = value.replace(/^(\d*)$/, "($1");
     e.target.value = value;
   });
 });

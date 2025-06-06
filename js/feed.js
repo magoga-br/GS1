@@ -1,4 +1,3 @@
-//scroll
 let prevScrollPos = window.pageYOffset;
 
 const sidebar = document.querySelector(".right-sidebar");
@@ -10,14 +9,14 @@ window.addEventListener("scroll", () => {
   if (prevScrollPos > currentScrollPos) {
     sidebar.style.top = "70px";
   } else if (prevScrollPos < currentScrollPos) {
-    mt = emergency.offsetHeight - 50;
+    let mt = emergency.offsetHeight - 50;
     sidebar.style.top = -mt + "px";
   }
 
   prevScrollPos = currentScrollPos;
 });
 
-//post
+
 const postSubmit = document.querySelector(".post-submit");
 
 postSubmit.addEventListener("click", function () {
@@ -25,7 +24,7 @@ postSubmit.addEventListener("click", function () {
   if (textarea.value.trim() !== "") {
     const textUser = textarea.value;
     const newPostHTML = `
-      <div class="post-card animated-content">
+            <div class="post-card animated-content">
         <div class="post-header">
           <div class="post-avatar">FM</div>
           <div class="post-meta">
@@ -42,10 +41,10 @@ postSubmit.addEventListener("click", function () {
         <img src="" class="post-image">
         <div class="post-actions">
           <button class="action-btn">
-            <i class="far fa-heart"></i> 0
+            <i class="far fa-heart"></i> <span>0</span>
           </button>
           <button class="action-btn">
-            <i class="far fa-comment"></i> 0
+            <i class="far fa-comment"></i> <span>0</span>
           </button>
           <button class="action-btn">
             <i class="fas fa-share"></i> Compartilhar
@@ -63,19 +62,21 @@ postSubmit.addEventListener("click", function () {
   }
 });
 
-// like buttons
-document.querySelectorAll(".action-btn .fa-heart").forEach((heart) => {
-  heart.addEventListener("click", function (e) {
-    e.stopPropagation();
-    this.classList.toggle("far");
-    this.classList.toggle("fas");
-    this.style.color = this.classList.contains("fas") ? "#ff6b6b" : "";
+//Sistema de likes dentro da plataforma
+document.querySelector('.feed-cards').addEventListener('click', function(e) {
+  if (e.target.matches('.action-btn .fa-heart')) {
+    const heart = e.target;
+    e.stopPropagation(); 
+    heart.classList.toggle("far");
+    heart.classList.toggle("fas");
+    heart.style.color = heart.classList.contains("fas") ? "#ff6b6b" : "";
 
-    const countElement = this.parentNode.querySelector("span");
+    const countElement = heart.parentNode.querySelector("span");
     if (countElement) {
       let count = parseInt(countElement.textContent);
-      count = this.classList.contains("fas") ? count + 1 : count - 1;
+      
+      count = heart.classList.contains("fas") ? count + 1 : count - 1;
       countElement.textContent = count;
     }
-  });
+  }
 });
